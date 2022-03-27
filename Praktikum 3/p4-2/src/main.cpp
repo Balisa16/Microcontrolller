@@ -11,12 +11,10 @@ ISR(INT0_vect)
 
 int main(void)
 {
-  // Inilisasi PORT Output
-  DDRD = 0xD0;          // ==>1101 0000 = D0
-  DDRB = 0x3F;          // ==>0011 1111 = 3F
-
-  PORTD |= _BV(PD2);    // Pin INT0 PD2 Pull-Up
-  EIMSK |= (1<<INT0);   // Enable interrupt
+  DDRD = 0xD0;
+  DDRB = 0x3F;
+  PORTD |= _BV(PD2);
+  EIMSK |= (1<<INT0);
   EICRA |= _BV(ISC01);
   sei();
   while ((true))

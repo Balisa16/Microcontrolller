@@ -18,20 +18,17 @@ ISR(INT1_vect)
 
 int main(void)
 {
-  // Inilisasi PORT Output
-  DDRD = 0xD0;                      // ==>1101 0000 = D0
-  DDRB = 0x3F;                      // ==>0011 1111 = 3F
-
-  PORTD |= (1<<4);
-  PORTD |= _BV(PD2);                // Pin INT0 PD2 Pull-Up
-  PORTD |= _BV(PD3);                // Pin INT1 PD2 Pull-Up
-  EIMSK |= (1<<INT0) | (1<<INT1);   // Enable interrupt
-  EICRA |= _BV(ISC01);              // Falling Edge Activate INT0
-  EICRA |= _BV(ISC11);              // Falling Edge Activate INT1
+  DDRD = 0xD0;
+  DDRB = 0x3F; 
+  PORTD |= _BV(PD2);
+  PORTD |= _BV(PD3);
+  EIMSK |= (1<<INT0) | (1<<INT1);
+  EICRA |= _BV(ISC01);
+  EICRA |= _BV(ISC11);
   sei();
-  while ((true))
+  while (true)
   {
-    PORTB = 0x00;
+    PORTB = 0x3F;
     PORTD |= (1<<PD7) | (1<<PD6);
     for (int i = 0; i <= 7; i++)
     {
