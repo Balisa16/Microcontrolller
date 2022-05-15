@@ -21,7 +21,7 @@ int main(void)
  set WDCE (Ini mengiziinkan update pada 4 putaran clock).
  */
   WDTCSR |= (1 << WDCE) | (1 << WDE);
-  WDTCSR = 1 << WDP3; // Set prescaller baru 2 Second
+  WDTCSR = _BV(WDP0) | _BV(WDP1) | _BV(WDP2); // Set prescaller baru 2 Second
   WDTCSR |= _BV(WDIE); //Enable WDE interrupt
   sei(); // Aktivasi global interrupt
   while (true)

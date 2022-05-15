@@ -9,7 +9,7 @@ void Delay(int vdly); // Deklarasi fungsi Delay
 int main(void)
 {
   DDRA = 0xFF;        // Inilisasi port output yang akan digunakan
-  wdt_enable(WDTO_1S);// Memilih waktu timeout yang dicapai adalah 1 S
+  wdt_enable(WDTO_8S);// Memilih waktu timeout yang dicapai adalah 8 S
   while (1)           // Looping berulang
   {
     PORTA = cnt++;    // Menampilkan keluaran pada PORT A sesuai counter A
